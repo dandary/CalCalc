@@ -1,34 +1,10 @@
-// тут в переменные мы записали наши кнопки.
-const resetButton = document.querySelector(".reset");
-const submitButton = document.querySelector(".submit");
-// получаем в переменную нашу форму и все данные которые в ней есть.
-// подробнее можно посмотреть тут https://learn.javascript.ru/form-elements
-const caloriesForm = document.forms.counter;
+import {inputsGroupChangeHandler, buttonCalculateClickHandler, inputGroupForResetChangeHandler, resetButtonClickHandler} from "./handlers.js";
 
-// span с калориями
-const normalCal = document.querySelector(".normal_cal");
+const buttonCalculateElement = document.querySelector(".form__submit-button");
+const resetButtonElement = document.querySelector(".form__reset-button");
+const inputsGroupElement = document.querySelector(".inputs-group");
 
-// вешаем событие щелчка по кнопки внутри пример функции
-resetButton.addEventListener("click", (event) => {
-    alert("Reset!");
-
-    // нужно чтобы страница после нажатия не обновлялась
-    event.preventDefault();
-});
-
-submitButton.addEventListener("click", (event) => {
-    alert("Submit!");
-
-    // эту строчку можно будет убрать, она для теста
-    // пример того как можно получить значения в форме. У нас два инпута с именем gender
-    // поэтому внутри массива gender мы проверяем поле checked. Нажмите "Рассчитать" и проверьте
-    console.log(caloriesForm.gender[0].checked);
-
-    // тоже можно будет удалить, пример как менять верстку из JS
-    // нажмите "Рассчитать" и проверьте
-    normalCal.textContent = "999999999999";
-
-    // нужно чтобы страница после нажатия не обновлялась
-    event.preventDefault();
-});
-
+inputsGroupElement.addEventListener("change", inputsGroupChangeHandler);
+buttonCalculateElement.addEventListener("click", buttonCalculateClickHandler);
+inputsGroupElement.addEventListener("change", inputGroupForResetChangeHandler);
+resetButtonElement.addEventListener("click", resetButtonClickHandler);
